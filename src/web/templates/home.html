@@ -1,0 +1,37 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<div class="navbar">
+    <h3><span role="img" class="flag">🇳🇬</span> INEC OCR APPLICATION (POC)</h3>
+</div>
+<main class="main__container">
+    <div class="file-upload__container">
+        <p>
+            Upload the INEC statement of result image (.png, .jpeg).
+            <span class="red">*</span>Kindly ensure that the image complies with the required standard for accurate results
+        </p>
+
+        <div class="upload-button__wrapper">
+            <input type="file" name="uploadImage" id="uploadImage" accept="image/jpeg, image/jpg, image/png">
+            <button class="upload-image__button">
+                <span>Upload File</span>
+                <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M42 30V38C42 39.0609 41.5786 40.0783 40.8284 40.8284C40.0783 41.5786 39.0609 42 38 42H10C8.93913 42 7.92172 41.5786 7.17157 40.8284C6.42143 40.0783 6 39.0609 6 38V30" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M34 16L24 6L14 16" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M24 6V30" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+        <button class="process-image__button"><span class="text">Process Image</span> <span id="loader"></span></button>
+    </div>
+    <div class="results__container" id="results__container">
+        <p class="results__placeholder"><span class="red">*</span>Results will display here.</p>
+        <div class="results__wrapper">
+            <div class="annotated-img__container">
+            </div>
+            <div class="results-data__container">
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
