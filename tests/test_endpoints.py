@@ -11,6 +11,8 @@ from src.web.main import app, UPLOADS_DIR
 
 client = TestClient(app)
 
+test_images_path = pathlib.Path("./test-images")
+
 def test_get_homepage():
     response = client.get("/")
     assert response.status_code == 200
@@ -22,15 +24,26 @@ def test_get_healthcheck():
     assert response.headers["content-type"] == "application/json"
     assert response.json() == {"status":True,"message":"Server is healthy!"}
 
-def test_ocr_endpoint():
-    test_images_path = pathlib.Path("./test-images")
-    valid_test_image = os.path.join(test_images_path, "./inec-form-ppocr-test-1.jpeg")
+def test_ocr_endpoint(): 
+    valid_test_image = os.path.join(test_images_path, "./1.jpeg")
     response = client.post("/inec-ocr", files={"file": open(valid_test_image, "rb")})
     assert response.status_code == 200
     assert response.headers["content-type"] == "application/json"
-    responseBody = response.json()
-    assert responseBody["status"] == True
-    assert responseBody["data"] != None
+    response_body = response.json()
+    assert response_body["status"] == True
+    assert response_body["data"] != None
+    assert "raw_ocr_results" in response_body["data"].keys()
+
+
+def test_ocr_endpoint_no_full_response():
+    valid_test_image = os.path.join(test_images_path, "./1.jpeg")
+    response = client.post("/inec-ocr?full=0", files={"file": open(valid_test_image, "rb")})
+    assert response.status_code == 200
+    assert response.headers["content-type"] == "application/json"
+    response_body = response.json()
+    assert response_body["status"] == True
+    assert response_body["data"] != None
+    assert "raw_ocr_results" not in response_body["data"].keys()
 
 # def test_img_upload():
     # valid_image_extensions = ['png','jpeg','jpg']
