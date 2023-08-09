@@ -2,9 +2,6 @@
 
 """types.py: Contains type aliases used in this project"""
 
-__author__ = "Similoluwa Okunowo"
-__email__ = "rexsimiloluwa@gmail.com"
-
 from typing import Dict, List, NamedTuple, Union
 
 

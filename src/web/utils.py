@@ -2,9 +2,6 @@
 
 """utils.py: Contains utility functions using by the FastAPI-powered web app/API"""
 
-__author__ = "Similoluwa Okunowo"
-__email__ = "rexsimiloluwa@gmail.com"
-
 import shutil
 import socket
 from datetime import datetime

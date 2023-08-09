@@ -2,9 +2,6 @@
 
 """main.py: The entry point for the server."""
 
-__author__ = "Similoluwa Okunowo"
-__email__ = "rexsimiloluwa@gmail.com"
-
 import uuid
 from pathlib import Path
 from typing import NamedTuple

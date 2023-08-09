@@ -2,10 +2,6 @@
 
 """constants.py: Contains constants used in this project"""
 
-__author__ = "Similoluwa Okunowo"
-__email__ = "rexsimiloluwa@gmail.com"
-
-
 # Political parties names
 POLITICAL_PARTIES = [
     "A",

@@ -2,9 +2,6 @@
 
 """common.py: Contains common utility functions"""
 
-__author__ = "Similoluwa Okunowo"
-__email__ = "rexsimiloluwa@gmail.com"
-
 import re
 from difflib import SequenceMatcher
 from typing import Any, Optional

@@ -2,8 +2,6 @@
 
 """clustering.py: Contains the algorithm for agglomerative clustering of the OCR'd bboxes"""
 
-__author__ = "Similoluwa Okunowo"
-__email__ = "rexsimiloluwa@gmail.com"
 __credits__ = [
     "Adrian Rosebrock (for suggesting the agglomerative clustering algorithm)"
 ]
@@ -33,8 +31,7 @@ def get_clustering_model() -> AgglomerativeClustering:
 
 
 def cluster_ocr_results(
-    bboxes: OCRBBoxesResultType,
-    texts: OCRTextsResultType,
+    bboxes: OCRBBoxesResultType, texts: OCRTextsResultType,
 ) -> AllColumns:
     """Returns the results of clustering the bounding boxes.
 

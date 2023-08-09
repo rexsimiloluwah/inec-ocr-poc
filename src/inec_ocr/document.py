@@ -2,8 +2,6 @@
 
 """document.py: Contains utility functions for parsing the INEC form document OCR results"""
 
-__author__ = "Similoluwa Okunowo"
-__email__ = "rexsimiloluwa@gmail.com"
 __credits__ = ["Adrian Rosebrock (for the four point transform algorithm)"]
 
 from typing import Dict, List, Optional, Tuple, Union
@@ -103,9 +101,7 @@ def get_polling_unit_data_fields_column(
 
 
 def get_political_parties_results_column(
-    all_cols: AllColumns,
-    pol_parties_column: ColumnTuple,
-    thresh: Optional[int] = 3,
+    all_cols: AllColumns, pol_parties_column: ColumnTuple, thresh: Optional[int] = 3,
 ) -> Union[ColumnTuple, None]:
     """Returns the column containing the political parties vote results.
 
@@ -158,8 +154,7 @@ def get_political_parties_results_column(
 
 
 def get_political_parties_results(
-    pol_parties_column: ColumnTuple,
-    pol_parties_results_column: ColumnTuple,
+    pol_parties_column: ColumnTuple, pol_parties_results_column: ColumnTuple,
 ) -> ResultsMap:
     """Returns a dictionary mapping the political parties to their vote count.
 
@@ -428,8 +423,7 @@ def get_pu_reg_info_values_column(
 
 
 def get_pu_reg_info_results(
-    pu_reg_info_fields_column: ColumnTuple,
-    pu_reg_info_values_column: ColumnTuple,
+    pu_reg_info_fields_column: ColumnTuple, pu_reg_info_values_column: ColumnTuple,
 ) -> ResultsMap:
     """Returns a dictionary mapping the PU registration info fields to their values.
 
@@ -474,10 +468,7 @@ def get_pu_reg_info_results(
 def get_document_data(
     all_cols: AllColumns,
 ) -> Tuple[
-    Union[ResultsMap, None],
-    Union[ResultsMap, None],
-    str,
-    Union[ResultsMap, None],
+    Union[ResultsMap, None], Union[ResultsMap, None], str, Union[ResultsMap, None],
 ]:
     """Full pipeline for parsing the INEC document and returning the results.
 

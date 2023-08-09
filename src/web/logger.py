@@ -2,10 +2,7 @@
 
 """logger.py: Custom logger"""
 
-__author__ = "Similoluwa Okunowo"
-__email__ = "rexsimiloluwa@gmail.com"
 __credits__ = ["ChatGPT"]
-
 
 import logging
 

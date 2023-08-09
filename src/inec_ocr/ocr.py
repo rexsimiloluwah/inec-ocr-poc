@@ -2,8 +2,6 @@
 
 """ocr.py: Contains utility functions for the Optical Character Recognition (OCR) pipeline"""
 
-__author__ = "Similoluwa Okunowo"
-__email__ = "rexsimiloluwa@gmail.com"
 
 import os
 import pathlib
