@@ -10,7 +10,10 @@ build-docker-image:
 run-docker-container:
 	docker run -p 8040:8040 inec-ocr-app
 
-run-docker-shell:
-	docker exec -it a21f92480b0f /bin/bash 
+run-pre-commit:
+	pre-commit run --all-files
+
+test:
+	pytest 
 
 

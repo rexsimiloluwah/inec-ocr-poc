@@ -37,7 +37,7 @@ processImageButton.addEventListener("click", function(){
 
         // Send the request to the server
         let xhr = new XMLHttpRequest()
-        xhr.open("POST", "/inec-ocr", true);
+        xhr.open("POST", "/inec-ocr?full=0", true);
 
         // Set the request header
         // xhr.setRequestHeader("Content-Type", "multipart/form-data");

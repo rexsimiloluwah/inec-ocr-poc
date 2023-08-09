@@ -13,7 +13,7 @@ from typing import List
 import numpy as np
 from sklearn.cluster import AgglomerativeClustering
 
-from .types import OCRBBoxesResultType, OCRTextsResultType, AllColumns
+from .types import AllColumns, OCRBBoxesResultType, OCRTextsResultType
 
 
 def get_clustering_model() -> AgglomerativeClustering:
@@ -33,12 +33,13 @@ def get_clustering_model() -> AgglomerativeClustering:
 
 
 def cluster_ocr_results(
-    bboxes: OCRBBoxesResultType, texts: OCRTextsResultType,
+    bboxes: OCRBBoxesResultType,
+    texts: OCRTextsResultType,
 ) -> AllColumns:
     """Returns the results of clustering the bounding boxes.
 
     This essentially clusters the obtained bounding boxes of the localized texts into columns.
-    The algorithm is based on the assumption that texts in the same column will have a similar 
+    The algorithm is based on the assumption that texts in the same column will have a similar
     starting x-coordinate value.
 
     Args:
@@ -77,7 +78,7 @@ def cluster_ocr_results(
     final_cols = []
 
     # Arrange the extracted texts into their respective columns
-    for (label, _) in sorted_clusters:
+    for label, _ in sorted_clusters:
         # Extract the indexes for the coordinates belonging to the current cluster
         idxs = np.where(model.labels_ == label)[0]
 

@@ -9,17 +9,17 @@ import shutil
 import socket
 from datetime import datetime
 from pathlib import Path
-from typing import Tuple, Callable, Union
 from tempfile import NamedTemporaryFile
+from typing import Callable, Tuple, Union
 
-import cv2
-import numpy as np
 import cloudinary
 import cloudinary.uploader
-from fastapi import UploadFile, Header, Depends
+import cv2
+import numpy as np
+from fastapi import Depends, Header, UploadFile
 from fastapi.exceptions import HTTPException
 
-from .settings import get_settings, Settings
+from .settings import Settings, get_settings
 
 settings = get_settings()
 
@@ -40,7 +40,7 @@ def save_upload_file(upload_file: UploadFile, dest_path: Path) -> None:
         dest_path (Path): Destination path for saving the uploaded file
     """
     try:
-        with destination.open("wb") as buffer:
+        with dest_path.open("wb") as buffer:
             shutil.copyfileobj(upload_file.file, buffer)
     finally:
         upload_file.file.close()
@@ -86,7 +86,7 @@ def write_img_to_tmp(img: np.ndarray) -> Path:
 
 def upload_img_to_cloudinary(tmp_path: Path) -> Union[str, None]:
     """Upload an image to cloudinary using the cloudinary SDK.
-    
+
     Args:
         tmp_path (Path): The temporary path to the input image
 
@@ -102,7 +102,7 @@ def upload_img_to_cloudinary(tmp_path: Path) -> Union[str, None]:
             resource_type="image",
         )
         return response["url"]
-    except Exception as e:
+    except Exception:
         return None
     finally:
         tmp_path.unlink()

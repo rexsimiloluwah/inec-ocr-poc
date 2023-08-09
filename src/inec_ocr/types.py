@@ -5,13 +5,8 @@
 __author__ = "Similoluwa Okunowo"
 __email__ = "rexsimiloluwa@gmail.com"
 
-from typing import (
-    Tuple,
-    List,
-    NamedTuple,
-    Union,
-    Dict,
-)
+from typing import Dict, List, NamedTuple, Union
+
 
 class BoundingBox(NamedTuple):
     x1: int
@@ -19,23 +14,28 @@ class BoundingBox(NamedTuple):
     x2: int
     y2: int
 
+
 class ColumnData(NamedTuple):
     text: str
     bbox: BoundingBox
 
+
 OCRBBoxesResultType = List[List[List[float]]]
 OCRTextsResultType = List[str]
 OCRScoresResultType = List[float]
+
 
 class OCRResultType(NamedTuple):
     bboxes: OCRBBoxesResultType
     texts: OCRTextsResultType
     scores: OCRScoresResultType
 
+
 class ColumnTuple(NamedTuple):
     column_data: List[ColumnData]
     column_idx: int
 
+
 Column = List[ColumnData]
 AllColumns = List[List[ColumnData]]
-ResultsMap = Dict[str, Union[int, str, float,  None]]
+ResultsMap = Dict[str, Union[int, str, float, None]]

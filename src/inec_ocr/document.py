@@ -6,31 +6,20 @@ __author__ = "Similoluwa Okunowo"
 __email__ = "rexsimiloluwa@gmail.com"
 __credits__ = ["Adrian Rosebrock (for the four point transform algorithm)"]
 
-from typing import (
-    List,
-    Union,
-    Tuple,
-    Optional,
-    Dict
-)
+from typing import Dict, List, Optional, Tuple, Union
 
 import cv2
 import numpy as np
 from scipy.spatial import distance as dist
 
-from .common import similar, is_near, is_number
-from .types import (
-    ColumnData,
-    ColumnTuple,
-    AllColumns,
-    ResultsMap
-)
+from .common import is_near, is_number, similar
 from .constants import (
+    ELECTION_TYPES,
     POLITICAL_PARTIES,
     POLLING_UNIT_DATA_FIELDS,
-    ELECTION_TYPES,
     POLLING_UNIT_REGISTRATION_INFO_FIELDS,
 )
+from .types import AllColumns, ColumnData, ColumnTuple, ResultsMap
 
 
 def get_political_parties_column(
@@ -176,8 +165,8 @@ def get_political_parties_results(
 
     Args:
         pol_parties_column (ColumnTuple): Tuple containing the political parties names column data and its index
-        pol_parties_results_column (ColumnTuple): Tuple containing the political parties results column and its index 
- 
+        pol_parties_results_column (ColumnTuple): Tuple containing the political parties results column and its index
+
     Returns:
         dict: A dictionary mapping the political parties names to their corresponding results (vote count)
     """
@@ -223,7 +212,7 @@ def get_polling_unit_data_values_column(
         all_cols (AllColumns): All the columns extracted from the OCR'd image
         polling_unit_data_fields_column (ColumnTuple): Tuple containing the polling unit data fields column data and its index
         thresh (Optional[int]): A heuristic value denoting the minimum number of OCR'd results that must be in the column
-    
+
     Returns:
         tuple: A tuple containing
         - col (ColumnData): Column data
@@ -316,7 +305,7 @@ def get_election_type(
     Args:
         all_cols (AllColumns): All the columns extracted from the OCR'd image
         similarity_thresh (Optional[int]): A heuristic threshold value specifying the minimum similarity index between the OCR'd and actual election type
-    
+
     Returns:
         str: The extracted election type
     """
@@ -349,7 +338,7 @@ def get_pu_reg_info_fields_column(
         all_cols (AllColumns): All the columns extracted from the OCR'd Image
         thresh (Optional[int]): A heuristic threshold value specifying the minimum number of values in the column
         similarity_thresh (Optional[int]): A heuristic threshold value specifying the minimum similarity index between the OCR'd and actual text
-    
+
     Returns:
         tuple: A tuple containing
         - col (Column data): The PU registration fields column data
@@ -446,7 +435,7 @@ def get_pu_reg_info_results(
 
     Args:
         pu_reg_info_fields_column (ColumnTuple): Tuple containing the PU registration info column data and its index
-        pu_reg_info_values_column (ColumnTuple): Tuple column containing the PU registration info values column data and its index 
+        pu_reg_info_values_column (ColumnTuple): Tuple column containing the PU registration info values column data and its index
 
     Returns:
         dict: A dictionary mapping the PU registration info fields to their values
@@ -542,12 +531,7 @@ def get_document_data(
     # Get the election type
     election_type = get_election_type(all_cols)
 
-    return (
-        pol_parties_results,
-        pu_data_results,
-        election_type,
-        pu_reg_info_results
-    )
+    return (pol_parties_results, pu_data_results, election_type, pu_reg_info_results)
 
 
 def order_points(points: np.ndarray) -> np.ndarray:

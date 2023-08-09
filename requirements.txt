@@ -17,4 +17,4 @@ scipy==1.9.1
 uuid==1.30
 uvicorn==0.21.1
 jinja2
-opencv-python-headless
+httpx

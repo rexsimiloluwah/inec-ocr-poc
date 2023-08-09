@@ -6,8 +6,8 @@ __author__ = "Similoluwa Okunowo"
 __email__ = "rexsimiloluwa@gmail.com"
 
 import re
-from typing import Optional, Any
 from difflib import SequenceMatcher
+from typing import Any, Optional
 
 import cv2
 import numpy as np

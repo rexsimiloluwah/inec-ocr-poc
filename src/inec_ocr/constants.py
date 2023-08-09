@@ -76,7 +76,7 @@ STATES = [
     "TARABA",
     "YOBE",
     "ZAMFARA",
-    "FCT ABUJA"
+    "FCT ABUJA",
 ]
 
 # Election Types
