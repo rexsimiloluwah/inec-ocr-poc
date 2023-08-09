@@ -13,6 +13,8 @@
 - k8s
 
 ## How it works?
+<img src="https://res.cloudinary.com/thecaveman/image/upload/v1691582877/inec-poc-ocr-bd_o3mvhl.png"/>
+
 
 ## Requirements
 - Python 3.x 
@@ -51,4 +53,6 @@ $ docker run -p 8040:8040 similoluwaokunowo/inec-ocr-app
 ```
 
 ## Testing the application
-
+```bash
+$ pytest
+```
